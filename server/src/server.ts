@@ -8,7 +8,7 @@ app.use(express.json());
 app.post("/feedbacks", (request, response) => {
   const { type, comment, screenshot } = request.body;
   console.log(type, comment, screenshot);
-  response.send();
+  response.json({ message: "Feedback received" });
 });
 
 app.listen(port, () => {
