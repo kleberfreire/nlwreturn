@@ -1,15 +1,14 @@
+import cors from "cors";
 import express from "express";
+
+import { routes } from "./routes";
 
 const app = express();
 const port = process.env.PORT || 3333;
 
+app.use(cors());
 app.use(express.json());
-
-app.post("/feedbacks", (request, response) => {
-  const { type, comment, screenshot } = request.body;
-  console.log(type, comment, screenshot);
-  response.json({ message: "Feedback received" });
-});
+app.use(routes);
 
 app.listen(port, () => {
   console.log("HTTP Server is running on port " + port);
